@@ -11,7 +11,6 @@ class UserController extends GetxController {
   final user = Rx<User>(User.empty());
   final errorString = Rx<String>('');
   final isLoading = Rx<bool>(false);
-  //bool isLoading = false;
 
   Future<void> loadUser(int id) async {
     try {

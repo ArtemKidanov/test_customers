@@ -8,7 +8,7 @@ final appRoutes = [
   GetPage(
     name: HomeScreen.screenName,
     binding: HomeBinding(),
-    page: () => HomeScreen(),
+    page: () => const HomeScreen(),
   ),
   GetPage(
     name: UserScreen.screenName,

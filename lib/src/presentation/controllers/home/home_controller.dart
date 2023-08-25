@@ -8,16 +8,21 @@ class HomeController extends GetxController {
 
   final GetUsersListInteractor _getUsersListInteractor;
 
-  final customers = RxList<User>([]);
+  final users = RxList<User>([]);
   final errorString = Rx<String>('');
+  final isLoading = Rx<bool>(false);
 
   Future<void> loadData() async {
+    isLoading.value = true;
+
     try {
       final users = await _getUsersListInteractor();
 
-      customers.addAll(users);
+      this.users.addAll(users);
     } on BaseException catch (e) {
       errorString.value = e.message;
     }
+
+    isLoading.value = false;
   }
 }

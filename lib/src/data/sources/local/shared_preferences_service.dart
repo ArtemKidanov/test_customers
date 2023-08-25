@@ -8,7 +8,7 @@ import 'package:test_customers/src/domain/entities/user.dart';
 class SharedPreferencesService extends GetxService {
   SharedPreferences? _sharedPreferences;
 
-  static const String _usersPageKey = 'users_page';
+  static const String _usersPagesKey = 'users_page';
 
   Future<SharedPreferencesService> init() async {
     _sharedPreferences = await SharedPreferences.getInstance();
@@ -17,7 +17,7 @@ class SharedPreferencesService extends GetxService {
 
   Future<void> saveUsersPage(PageResponseModel pageResponseModel) async {
     final usersSavedPagesStrings =
-        _sharedPreferences?.getStringList(_usersPageKey);
+        _sharedPreferences?.getStringList(_usersPagesKey);
     if (usersSavedPagesStrings != null) {
       final usersSavedPages = usersSavedPagesStrings
           .map(
@@ -39,7 +39,7 @@ class SharedPreferencesService extends GetxService {
       }
 
       await _sharedPreferences?.setStringList(
-        _usersPageKey,
+        _usersPagesKey,
         usersSavedPages
             .map(
               (page) => jsonEncode(page.toJson()),
@@ -48,7 +48,7 @@ class SharedPreferencesService extends GetxService {
       );
     } else {
       await _sharedPreferences?.setStringList(
-          _usersPageKey, [jsonEncode(pageResponseModel.toJson())]);
+          _usersPagesKey, [jsonEncode(pageResponseModel.toJson())]);
     }
   }
 
@@ -72,7 +72,7 @@ class SharedPreferencesService extends GetxService {
 
   List<PageResponseModel> _getAllUsersPages() {
     final usersPagesStringsList =
-        _sharedPreferences?.getStringList(_usersPageKey);
+        _sharedPreferences?.getStringList(_usersPagesKey);
 
     if (usersPagesStringsList == null) {
       return [];

@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
-import 'package:test_customers/src/data/services/shared_preferences_service.dart';
+import 'package:test_customers/src/data/sources/local/shared_preferences_service.dart';
 import 'package:test_customers/src/data/sources/network/api_client.dart';
 import 'package:test_customers/src/domain/entities/exceptions.dart';
 import 'package:test_customers/src/domain/entities/user.dart';
